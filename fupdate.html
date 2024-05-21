@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPDATE OR DELETE ORDERS</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: rgb(255, 147, 169);
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        form b {
+            width: 200px;
+            text-align: left;
+            margin-bottom: 10px;
+        }
+        a input[type="button"] {
+            padding: 10px 20px;
+            background-color: #a4212e;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        a input[type="button"]:hover {
+            background-color: #6a0c0c;
+        }
+    </style>
+</head>
+<body>
+    <h1>ORDER STATUS!!</h1><br/>
+    <form name="myform">
+        <b><input type="checkbox" name="ORDER PLACED" id="orderPlaced">ORDER PLACED</b><br/>
+        <b><input type="checkbox" name="SHIPPED" id="orderShipped">ORDER SHIPPED</b><br>
+        <b><input type="checkbox" name="OUT FOR DELIVERY" id="outForDelivery">OUT FOR DELIVERY</b><br/>
+        <b><input type="checkbox" name="ORDER DELIVERED" id="orderDelivered">ORDER DELIVERED</b><br/><br/>
+        <a href="farmer.html"><input type="button" value="GO BACK"></a>
+    </form>
+
+    <script>
+        function promptUser() {
+            const orderPlaced = confirm("Have you completed the 'Order Placed' stage?");
+            const orderPlacedCheckbox = document.getElementById('orderPlaced');
+            orderPlacedCheckbox.checked = orderPlaced;
+
+            const orderShipped = confirm("Have you completed the 'Order Shipped' stage?");
+            const orderShippedCheckbox = document.getElementById('orderShipped');
+            orderShippedCheckbox.checked = orderShipped;
+
+            const outForDelivery = confirm("Have you completed the 'Out for Delivery' stage?");
+            const outForDeliveryCheckbox = document.getElementById('outForDelivery');
+            outForDeliveryCheckbox.checked = outForDelivery;
+
+            const orderDelivered = confirm("Have you completed the 'Order Delivered' stage?");
+            const orderDeliveredCheckbox = document.getElementById('orderDelivered');
+            orderDeliveredCheckbox.checked = orderDelivered;
+        }
+
+        promptUser(); // Call the function to prompt the user
+    </script>
+</body>
+</html>

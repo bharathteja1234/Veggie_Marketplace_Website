@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MANAGE ORDERS</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: rgb(238, 181, 227);
+        }
+    </style>
+</head>
+<body>
+    <h1>ADD, UPDATE & DELETE ORDERS!!</h1><br/>
+    <table border="2" align="center" id="productTable">
+        <caption align="bottom">
+            <i>Order Details</i><br/>
+        </caption>
+        <tr>
+            <th>PRODUCTS</th>
+            <th>AVAILABLE COUNT(<i>in no of bags</i>)</th>
+            <th>NO OF ORDERS RECEIVED</th>
+            <th>REMAINING BAGS</th>
+            <th>ACTION</th>
+        </tr>
+        <tr>
+            <td name="product">RICE</td>
+            <td><input type="number" class="total" oninput="updateRemainingBags()"></td>
+            <td><input type="number" class="req" oninput="updateRemainingBags()"></td>
+            <td class="rem"></td>
+            <td><button onclick="removeRow(this)">Delete</button></td>
+        </tr>
+    </table>
+    <button onclick="addRowPrompt()">ADD PRODUCT</button><br/>
+    <form name="myform">
+        <input type="button" value="DONE" onclick="complete()">
+    </form>
+    <script>
+        function complete(){
+            alert("Data Entered Successfully!!");
+            window.open("farmer.html");
+        }
+
+        function updateRemainingBags() {
+            const rows = document.querySelectorAll('#productTable tr:not(:first-child)');
+            rows.forEach(row => {
+                const total = parseInt(row.querySelector('.total').value) || 0;
+                const req = parseInt(row.querySelector('.req').value) || 0;
+                const rem = total - req;
+                row.querySelector('.rem').textContent = rem;
+            });
+        }
+
+        function addRowPrompt() {
+            const productName = prompt("Enter product name:");
+            if (productName) {
+                const availableCount = prompt("Enter available count:");
+                const ordersReceived = prompt("Enter no of orders received:");
+                addRow(productName, availableCount, ordersReceived);
+                updateRemainingBags();  // Update remaining bags count for the new row
+            }
+        }
+
+        function addRow(productName, availableCount, ordersReceived) {
+            const table = document.getElementById('productTable');
+            const newRow = table.insertRow(table.rows.length - 1);
+
+            const cells = [productName, availableCount, ordersReceived, availableCount - ordersReceived];
+            cells.forEach((cellContent, index) => {
+                const cell = newRow.insertCell(index);
+                if (index === 0) {
+                    cell.textContent = cellContent;
+                } else if (index === 3) {
+                    cell.classList.add('rem');
+                    cell.textContent = cellContent;  // Display remaining bags count
+                } else {
+                    const input = document.createElement('input');
+                    input.type = 'number';
+                    input.value = cellContent;
+                    input.classList.add(index === 1 ? 'total' : 'req');
+                    input.addEventListener('input', updateRemainingBags);
+                    cell.appendChild(input);
+                }
+            });
+
+            const actionCell = newRow.insertCell(cells.length);
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Delete';
+            deleteButton.addEventListener('click', function() {
+                removeRow(this);
+                updateRemainingBags();
+            });
+            actionCell.appendChild(deleteButton);
+        }
+
+        function removeRow(button) {
+            const row = button.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+            updateRemainingBags();
+        }
+
+        // Initial update
+        updateRemainingBags();
+    </script>
+</body>
+</html>

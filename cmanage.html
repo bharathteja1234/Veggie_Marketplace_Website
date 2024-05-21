@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Wallet Balance</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: #dae3a1;
+            font-family: Arial, sans-serif;
+        }
+        .wallet-info {
+            margin-top: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .wallet-balance {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+        .transaction-input {
+            padding: 10px;
+            margin: 10px;
+            width: 100px;
+        }
+        .transaction-button {
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            display: block;
+            margin: 10px auto;
+        }
+        .transaction-button.add {
+            width: 100px;
+            height: 40px;
+            border-radius: 10px;
+            background-color: #003102;
+            color: white;
+        }
+        .transaction-button.withdraw {
+            width: 100px;
+            height: 40px;
+            border-radius: 10px;
+            text-align: center;
+            background-color: #6c0000;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>MY BALANCE!!</h1>
+    <div class="wallet-info">
+        <p>Your current wallet balance is:</p>
+        <p class="wallet-balance" id="balance">$500.00</p>
+
+        <label for="addAmount">Add Amount:</label>
+        <input type="number" id="addAmount" class="transaction-input">
+        <button onclick="addMoney()" class="transaction-button add">Add</button>
+
+        <label for="withdrawAmount">Withdraw Amount:</label>
+        <input type="number" id="withdrawAmount" class="transaction-input">
+        <button onclick="withdrawMoney()" class="transaction-button withdraw">Withdraw</button>
+
+        <p id="remainingBalance"></p>
+    </div>
+
+    <script>
+        let balance = 0.00; // Initial balance
+
+        function updateBalance() {
+            document.getElementById('balance').innerText = '$' + balance.toFixed(2);
+        }
+
+        function addMoney() {
+            const addAmount = parseFloat(document.getElementById('addAmount').value);
+            if (!isNaN(addAmount) && addAmount > 0) {
+                balance += addAmount;
+                updateBalance();
+                document.getElementById('remainingBalance').innerText = `Added $${addAmount.toFixed(2)}. Remaining balance: $${balance.toFixed(2)}`;
+            }
+        }
+
+        function withdrawMoney() {
+            const withdrawAmount = parseFloat(document.getElementById('withdrawAmount').value);
+            if (!isNaN(withdrawAmount) && withdrawAmount > 0 && withdrawAmount <= balance) {
+                balance -= withdrawAmount;
+                updateBalance();
+                document.getElementById('remainingBalance').innerText = `Withdrawn $${withdrawAmount.toFixed(2)}. Remaining balance: $${balance.toFixed(2)}`;
+            } else if (withdrawAmount > balance) {
+                document.getElementById('remainingBalance').innerText = `Withdrawal amount exceeds the balance.`;
+            }
+        }
+
+        // Initial balance display
+        updateBalance();
+    </script>
+</body>
+</html>

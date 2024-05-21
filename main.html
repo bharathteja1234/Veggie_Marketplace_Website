@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ONLINE AGRI SHOP</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: rgb(190, 255, 144);
+            background-image: url(agri1.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        div {
+            background-color: rgba(255, 255, 255, 0.366);
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.401);
+            padding: 20px;
+            border-radius: 40px;
+            width: 500px;
+            margin: 0 auto; /* Center the div horizontally */
+        }
+        div.form button[type="button"] {
+            width: 100px;
+            height: 40px;
+            border-radius: 25px;
+            color: rgb(255, 238, 218);
+            background-color: black;
+        }
+        img {
+            filter: drop-shadow(1px 1px 5px rgba(0, 0, 0, 0.5));
+        }
+        img:hover {
+            filter: drop-shadow(2px 2px 5px black);
+        }
+        a {
+            text-decoration: none;
+            color: rgb(47, 47, 47);
+        }
+        a:hover {
+            color: black;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <marquee><h1>WELCOME TO ONLINE AGRI SHOP!!</h1></marquee><br/>
+    <div class="form">
+        <h2>SELECT YOUR CATEGORY</h2>
+        <img src="hello.jpg" alt="user" width="100" height="100"><br/><br/>
+        <form name="myform" action="process_category.php" method="post">
+            <a href="farmer.html"><button type="button"><b>FARMER</b></button></a>&nbsp;&nbsp;&nbsp;
+            <a href="consumer.html"><button type="button"><b>CONSUMER</b></button></a>
+        </form><br/>
+        &copy; 2023 <a href="mylicense.html"><b>Bharath Teja K </b></a>&nbsp;All Rights Reserved.
+    </div>
+</body>
+</html>

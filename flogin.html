@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FARMER LOGIN PAGE</title>
+    <style>
+        body{
+            text-align: center;
+            background-color: rgb(171, 240, 254);
+        }
+        input[type="button"]{
+            background-color: rgb(30, 59, 98);
+            color: whitesmoke;
+            border-radius: 20px;
+            width: 75px;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>FARMER LOGIN PAGE!!</h1><br/><br/>
+    <div class="form">
+        <form name="myform">
+            <b>USERNAME: <input type="text" value="" name="name" id="name"></b><br/><br/>
+            <b>PASSWORD: <input type="password" value="" name="pwd" id="pwd"></b><br/><br/>
+            <input type="button" value="LOGIN" onClick="login()"><br/><br/>
+        </form>
+    </div>
+    <script>
+        function login() {
+            var name = document.getElementById('name').value;
+            var pwd = document.getElementById('pwd').value;
+            if (name === "" ||pwd === "") {
+                alert("Username and Password shouldn't be empty!!")
+            }
+            else {
+                alert("Logged in Successfully!!")
+            }
+        }
+    </script>
+</body>
+</html>

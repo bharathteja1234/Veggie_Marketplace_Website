@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPLOAD IMAGES</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: rgb(171, 240, 254);
+        }
+        input[type="button"] {
+            background-color: #1e72aa;
+            color: whitesmoke;
+            border-radius: 20px;
+            width: 85px;
+            font-weight: bold;
+            height: 40px;
+        }
+        /* Style for file input button */
+        .file-input-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #1e72aa;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+        }
+        .file-input-button input[type="file"] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>UPLOAD YOUR IMAGES!!</h1><br/><br/>
+    <div class="form">
+        <form name="myform">
+            <b>USERNAME: <input type="text" value="" name="name" id="name"></b><br/><br/>
+            <b>PASSWORD: <input type="password" value="" name="pwd" id="pwd"></b><br/><br/>
+            <input type="button" value="LOGIN" onClick="login()"><br/><br/>
+            <!-- Added file input field -->
+            <label for="image" class="file-input-button">
+                Upload Image
+                <input type="file" id="image" accept="image/*" onchange="displayImage(event)" />
+            </label><br/><br/>
+            <!-- Added container for displaying the image -->
+            <div id="imageContainer"></div>
+            <br/><br/>
+            <input type="button" value="HOME" onClick="home()"><br/><br/>
+        </form>
+    </div>
+    <script>
+        function login() {
+            var name = document.getElementById('name').value;
+            var pwd = document.getElementById('pwd').value;
+            if (name === "" || pwd === "") {
+                alert("Username and Password shouldn't be empty!!");
+            } else {
+                alert("Logged in Successfully!!");
+            }
+        }
+
+        function displayImage(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                const imageContainer = document.getElementById('imageContainer');
+                const imageElement = document.createElement('img');
+                imageElement.src = e.target.result;
+                imageElement.alt = 'Uploaded Image';
+                imageContainer.innerHTML = ''; // Clear previous image
+                imageContainer.appendChild(imageElement);
+            };
+
+            reader.readAsDataURL(file);
+        }
+
+        function home(){
+            alert("Redirecting to Farmer home Page!!")
+            window.open("farmer.html")
+        }
+    </script>
+</body>
+</html>

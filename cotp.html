@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP VERIFICATION</title>
+    <style>
+        body{
+            text-align: center;
+            background-color: rgb(171, 254, 171);
+        }
+        input[type="button"]{
+            background-color: rgb(30, 59, 98);
+            color: whitesmoke;
+            border-radius: 20px;
+            width: 75px;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>OTP VERIFICATION</h1><br/><br/>
+    <div class="form">
+        <form name="myform">
+            <b>MOBILE NO: <input type="text" value="" name="phno" id="phno"></b><br/><br/>
+            <b>ENTER OTP: <input type="text" value="" name="otp" id="otp"></b><br/><br/>
+            <input type="button" value="SUBMIT" onClick="verify()"><br/><br/>
+        </form>
+    </div>
+    <script>
+        function verify(){
+            var phno = document.getElementById('phno').value;
+            var otp = document.getElementById('otp').value;
+            if (phno === "" ||otp === "") {
+                window.alert("Phone Number and OTP shouldn't be empty!!")
+            }
+            else {
+                window.alert("OTP Submitted Successfully!!")
+            }
+        }
+    </script>
+</body>
+</html>

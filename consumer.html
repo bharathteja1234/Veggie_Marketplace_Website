@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CONSUMER PAGE</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: rgb(190, 255, 144);
+            background-image: url(consumer.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        div.farmer button[type="button"]{
+            border-radius: 25px;
+            background-color: rgb(216, 42, 42);
+            color: rgb(255, 255, 245);
+            width: 180px;
+            height: 45px;
+        }
+    </style>
+</head>
+<body>
+        <h1>WELCOME TO CONSUMER PAGE!!</h1><br/>
+        <div class="farmer">
+            <form name="myform">
+                <a href="clogin.html"><button type="button" onClick="login()"><b>CUSTOMER LOGIN</b></button></a><br/><br/>
+                <a href="cregister.html"><button type="button" onClick="register()"><b>NEW CUSTOMER REGISTRATION</b></button></a><br/><br/>
+                <a href="cotp.html"><button type="button"><b>OTP VERIFICATION</b></button></a><br/><br/>
+                <a href="cmyaccount.html"><button type="button"><b>MY ACCOUNT</b></button></a><br/><br/>
+                <a href="cmanage.html"><button type="button"><b>MANAGE WALLET BALANCE</b></button></a><br/><br/>
+                <a href="cproduct.html"><button type="button"><b>VIEW PRODUCT DETAILS</b></button></a><br/><br/>
+                <a href="caddtocart.html"><button type="button"><b>ADD TO CART</b></button></a><br/><br/>
+                <a href="ceditdelete.html"><button type="button"><b>EDIT OR DELETE CART</b></button></a><br/><br/>
+                <a href="cmystatus.html"><button type="button"><b>MY ORDER STATUS</b></button></a><br/><br/>
+                <a href="online_agri_shop.html"><button type="button" onClick="home()"><b>HOME</b></button></a><br/><br/>
+            </form>
+        </div>
+        <script>
+            function home(){
+                window.alert("REDIRECTING TO HOME PAGE!")
+            }
+            function register(){
+                window.alert("OPENING REGISTRATION PAGE!")
+            }
+            function login(){
+                window.alert("ENTER CREDENTIALS FOR LOGGING IN!!")
+            }
+        </script>
+</body>
+</html>

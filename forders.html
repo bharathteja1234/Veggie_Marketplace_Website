@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MANAGE ORDERS</title>
+    <style>
+        body{
+            text-align: center;
+            background-color: rgb(226, 255, 197);
+        }
+    </style>
+</head>
+<body>
+    <h1>MANAGE ORDERS!!</h1><br/>
+    <table border="2" align="center">
+        <caption align="bottom">
+            <i>Order Details</i><br/>
+        </caption>
+        <tr>
+            <th>PRODUCTS</th>
+            <th>AVAILABLE COUNT(<i>in no of bags</i>)</th>
+            <th>NO OF ORDERS RECEIVED</th>
+            <th>REMAINING BAGS</th>
+        </tr>
+        <tr>
+            <!--td style="text-align: center;"><input type="text" value="" id="product_type"!-->
+            <td name="product">RICE</td>
+            <td><input type="number" id="total_rice" oninput="updateRemainingBags()"></td>
+            <td><input type="number" id="req_rice" oninput="updateRemainingBags()"></td>
+            <td id="rem_rice"></td>
+        </tr>
+        <tr>
+            <td name="product">WHEAT</td>
+            <td><input type="number" id="total_wheat" oninput="updateRemainingBags()"></td>
+            <td><input type="number" id="req_wheat" oninput="updateRemainingBags()"></td>
+            <td id="rem_wheat"></td>
+        </tr>
+        <tr>
+            <td name="product">MILLETS</td>
+            <td><input type="number" id="total_corn" oninput="updateRemainingBags()"></td>
+            <td><input type="number" id="req_corn" oninput="updateRemainingBags()"></td>
+            <td id="rem_corn"></td>
+        </tr>
+        <tr>
+            <td name="product">CORN</td>
+            <td><input type="number" id="total_millets" oninput="updateRemainingBags()"></td>
+            <td><input type="number" id="req_millets" oninput="updateRemainingBags()"></td>
+            <td id="rem_millets"></td>
+        </tr>
+    </table>
+    <form name="myform">
+        <input type="button" value="DONE" onclick="complete()">
+    </form>
+    <script>
+        function complete(){
+            alert("Data Entered Successfully!!")
+            window.open("farmer.html")
+        }
+        function updateRemainingBags() {
+            // Calculate remaining bags for each product
+            const products = ['rice', 'wheat', 'corn', 'millets'];
+            products.forEach(product => {
+                const total = parseInt(document.getElementById(`total_${product}`).value) || 0;
+                const req = parseInt(document.getElementById(`req_${product}`).value) || 0;
+                const rem = total - req;
+                document.getElementById(`rem_${product}`).textContent = rem;
+            });
+        }
+        // Initial update
+        updateRemainingBags();
+    </script>
+</body>
+</html>

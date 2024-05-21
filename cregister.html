@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CUSTOMER REGISTRATION TITLE</title>
+    <style>
+        body{
+            text-align: center;
+            background-color: rgb(255, 222, 181);
+        }
+        input[type="button"]{
+            color: rgb(240, 247, 255);
+            background-color:rgb(78, 42, 42);
+            width: 100px;
+            height: 35px;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>CUSTOMER REGISTRATION!!</h1><br/><br/>
+    <div class="form">
+        <form name="myform">
+            <b>USERNAME: <input type="text" value="" name="name" id="name"></b><br/><br/>
+            <b>PASSWORD: <input type="password" value="" name="pwd" id="pwd"></b><br/><br/>
+            <b>PHONE NO: <input type="text" value="" name="phno" id="phno"></b><br/><br/>
+            <b>EMAIL ID: <input type="text" value="" name="email" id="email"></b><br/><br/>
+            <input type="button" value="REGISTER" onClick="register()"><br/><br/>
+        </form>
+    </div>
+    <script>
+        function register() {
+            var name = document.getElementById('name').value;
+            var pwd = document.getElementById('pwd').value;
+            var phno = document.getElementById('phno').value;
+            var email = document.getElementById('email').value;
+            if (name === "" ||pwd === ""||phno ==="") {
+                alert("Username, Password and Phone no shouldn't be empty!!")
+            }
+            else {
+                alert("RegisteredSuccessfully!!\nNow Please LOGIN")
+                window.open("clogin.html")
+            }
+        }
+    </script>
+</body>
+</html>

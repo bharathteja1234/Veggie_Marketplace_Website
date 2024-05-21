@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MY ORDER STATUS</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color:rgb(255, 245, 230);
+        }
+        h1{
+            color: #6a0c0c;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>YOUR ORDER STATUS!!</h1>
+
+        <!-- Order Placed -->
+        <div id="order-placed">
+            <h2>Order Placed</h2>
+            <input type="checkbox" id="orderPlaced"> Order Placed
+        </div>
+
+        <!-- Order Shipped -->
+        <div id="order-shipped">
+            <h2>Order Shipped</h2>
+            <input type="checkbox" id="orderShipped"> Order Shipped
+        </div>
+
+        <!-- Out for Delivery -->
+        <div id="out-for-delivery">
+            <h2>Out for Delivery</h2>
+            <input type="checkbox" id="outForDelivery"> Out for Delivery
+        </div>
+
+        <!-- Order Delivered -->
+        <div id="order-delivered">
+            <h2>Order Delivered</h2>
+            <input type="checkbox" id="orderDelivered"> Order Delivered
+        </div>
+
+        <a href="consumer.html">Home</a>
+        <p>Contact us at sales@gmail.com for any inquiries or assistance.</p>
+    </div>
+
+    <script>
+        // Function to retrieve URL parameters
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(fupdate.html);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        // Check the appropriate checkboxes based on URL parameters
+        const orderPlacedStatus = getParameterByName('ORDER_PLACED');
+        const orderShippedStatus = getParameterByName('ORDER_SHIPPED');
+        const outForDeliveryStatus = getParameterByName('OUT_FOR_DELIVERY');
+        const orderDeliveredStatus = getParameterByName('ORDER_DELIVERED');
+
+        document.getElementById('orderPlaced').checked = orderPlacedStatus === 'true';
+        document.getElementById('orderShipped').checked = orderShippedStatus === 'true';
+        document.getElementById('outForDelivery').checked = outForDeliveryStatus === 'true';
+        document.getElementById('orderDelivered').checked = orderDeliveredStatus === 'true';
+    </script>
+</body>
+</html>
